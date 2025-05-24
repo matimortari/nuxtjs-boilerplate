@@ -1,0 +1,134 @@
+{
+  "locale.en-US": "English",
+  "locale.fr-FR": "French",
+  "locale.dir": "ltr",
+
+  "site": {
+    "name": "Nuxt.js Boilerplate"
+  },
+
+  "themes": {
+    "light": "Light",
+    "dark": "Dark"
+  },
+
+  "dialog": {
+    "closeButton": "Close",
+    "confirmButton": "Confirm"
+  },
+
+  "forgotPassword": {
+    "title": "Reset your password",
+    "emailPlaceholder": "Email address",
+    "submitButton": "Request password reset",
+    "invalidEmail": "Invalid email address",
+    "successMessage": "Password reset email sent!"
+  },
+
+  "footer": {
+    "taglineStart": "This site is authenticated by supabase.com and the Supabase",
+    "taglineHighlightStart": "Privacy Policy",
+    "taglineMiddle": "and",
+    "taglineHighlightEnd": "Terms of Service",
+    "taglineEnd": "apply."
+  },
+
+  "pages": {
+    "index": {
+      "meta": {
+        "title": "Home",
+        "description": "Home page"
+      },
+      "link": "Home",
+      "title": "Nuxt.js Boilerplate",
+      "description": "A ready to use starter kit for all kinds of projects",
+      "taglineStart": "Packed with",
+      "taglineHighlight": "features",
+      "taglineEnd": "to use",
+      "greeting": "Hi",
+      "logout": "Log out",
+      "unauthenticated": "Unauthenticated",
+      "login": "Login",
+      "register": "Register",
+      "errorLogout": "Something went wrong!",
+      "features": {
+        "nuxt3": "Nuxt 3",
+        "typescript": "TypeScript 6",
+        "tailwind": "Tailwind CSS",
+        "nuxtIcons": "Nuxt Icons",
+        "googleFonts": "Google Fonts",
+        "pinia": "Pinia",
+        "i18n": "Nuxt i18n",
+        "supabase": "Supabase Auth",
+        "prisma": "Prisma",
+        "eslint": "ESLint 9"
+      }
+    },
+
+    "login": {
+      "meta": {
+        "title": "Login",
+        "description": "Login page"
+      },
+      "link": "Login",
+      "title": "Login to your account",
+      "emailPlaceholder": "Email address",
+      "passwordPlaceholder": "Password",
+      "submitButton": "Sign in",
+      "orSignInWith": "Or sign in with",
+      "googleLogin": "Google",
+      "githubLogin": "GitHub",
+      "forgotPassword": "Forgot your password?",
+      "noAccount": "Don’t have an account?",
+      "createAccount": "Create new account",
+      "invalidCredentials": "Invalid login credentials",
+      "oauthError": "OAuth login failed. Please try again."
+    },
+
+    "register": {
+      "meta": {
+        "title": "Register",
+        "description": "Register page"
+      },
+      "link": "Register",
+      "title": "Create a new account",
+      "firstNamePlaceholder": "First name",
+      "lastNamePlaceholder": "Last name",
+      "emailPlaceholder": "Email address",
+      "passwordPlaceholder": "Password",
+      "submitButton": "Sign up",
+      "agreementText": "By signing up you agree to our",
+      "termsOfService": "API Terms of Service",
+      "and": "and to our",
+      "privacyPolicy": "Privacy Policy",
+      "firstNameRequired": "First name required",
+      "lastNameRequired": "Last name required",
+      "signUpFailed": "Failed to fetch"
+    },
+
+    "newPassword": {
+      "meta": {
+        "title": "New Password",
+        "description": "New Password page"
+      },
+      "link": "New Password",
+      "title": "Create a new password",
+      "passwordPlaceholder": "Password",
+      "repeatPlaceholder": "Repeat password",
+      "submitButton": "Save",
+      "passwordMismatch": "Password mismatch!",
+      "updateFailed": "Failed to fetch",
+      "updateSuccess": "Password changed"
+    },
+
+    "minimal": {
+      "meta": {
+        "title": "Minimal page",
+        "description": "Minimal page using Fullscreen-layout"
+      },
+      "link": "Minimal",
+      "title": "Minimal page with Fullscreen-layout",
+      "paragraph": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque iste atque, hic porro officiis fugit quae deserunt nobis dolorum odit dignissimos consequatur esse maiores repellat impedit. Quae dolorum id rem?"
+    }
+  }
+}

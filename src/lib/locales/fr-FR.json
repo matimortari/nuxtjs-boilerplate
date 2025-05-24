@@ -1,0 +1,133 @@
+{
+  "locale.en-US": "English",
+  "locale.fr-FR": "Français",
+  "locale.dir": "ltr",
+
+  "site": {
+    "name": "Nuxt.js Boilerplate"
+  },
+
+  "themes": {
+    "light": "Clair",
+    "dark": "Sombre"
+  },
+
+  "dialog": {
+    "closeButton": "Fermer",
+    "confirmButton": "Confirmer"
+  },
+
+  "forgotPassword": {
+    "title": "Mot de passe oublié",
+    "emailPlaceholder": "Adresse e-mail",
+    "submitButton": "Demander la réinitialisation du mot de passe",
+    "invalidEmail": "Adresse e-mail invalide",
+    "successMessage": "E-mail de réinitialisation du mot de passe envoyé !"
+  },
+
+  "footer": {
+    "taglineStart": "Ce site est authentifié par supabase.com et la",
+    "taglineHighlightStart": "Politique de confidentialité",
+    "taglineMiddle": "et les",
+    "taglineHighlightEnd": "Conditions d'utilisation",
+    "taglineEnd": "s'appliquent."
+  },
+
+  "pages": {
+    "index": {
+      "meta": {
+        "title": "Accueil",
+        "description": "Page d'accueil"
+      },
+      "link": "Accueil",
+      "title": "Nuxt.js Boilerplate",
+      "description": "Un kit de démarrage prêt à l'emploi pour tout type de projet",
+      "taglineStart": "Rempli de",
+      "taglineHighlight": "fonctionnalités",
+      "taglineEnd": "prêtes à l'emploi",
+      "greeting": "Bonjour",
+      "logout": "Se déconnecter",
+      "unauthenticated": "Non authentifié",
+      "login": "Connexion",
+      "register": "Inscription",
+      "errorLogout": "Une erreur est survenue!",
+      "features": {
+        "nuxt3": "Nuxt 3",
+        "typescript": "TypeScript 6",
+        "tailwind": "Tailwind CSS",
+        "nuxtIcons": "Nuxt Icons",
+        "googleFonts": "Google Fonts",
+        "pinia": "Pinia",
+        "i18n": "Nuxt i18n",
+        "supabase": "Supabase Auth",
+        "prisma": "Prisma",
+        "eslint": "ESLint 9"
+      }
+    },
+
+    "login": {
+      "meta": {
+        "title": "Connexion",
+        "description": "Page de connexion"
+      },
+      "link": "Connexion",
+      "title": "Connectez-vous à votre compte",
+      "emailPlaceholder": "Adresse e-mail",
+      "passwordPlaceholder": "Mot de passe",
+      "submitButton": "Se connecter",
+      "orSignInWith": "Ou connectez-vous avec",
+      "googleLogin": "Google",
+      "githubLogin": "GitHub",
+      "forgotPassword": "Mot de passe oublié ?",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "createAccount": "Créer un compte",
+      "invalidCredentials": "Identifiants invalides",
+      "oauthError": "Échec de la connexion OAuth. Veuillez réessayer."
+    },
+
+    "register": {
+      "meta": {
+        "title": "Inscription",
+        "description": "Page d'inscription"
+      },
+      "link": "Inscription",
+      "title": "Créer un nouveau compte",
+      "firstNamePlaceholder": "Prénom",
+      "lastNamePlaceholder": "Nom",
+      "emailPlaceholder": "Adresse e-mail",
+      "passwordPlaceholder": "Mot de passe",
+      "submitButton": "S'inscrire",
+      "agreementText": "En vous inscrivant, vous acceptez nos",
+      "termsOfService": "Conditions d'utilisation de l'API",
+      "and": "et à notre",
+      "privacyPolicy": "Politique de confidentialité",
+      "firstNameRequired": "Le prénom est requis",
+      "lastNameRequired": "Le nom est requis",
+      "signUpFailed": "Échec de l'inscription"
+    },
+    "newPassword": {
+      "meta": {
+        "title": "Nouveau mot de passe",
+        "description": "Page de création d'un nouveau mot de passe"
+      },
+      "link": "Nouveau mot de passe",
+      "title": "Créer un nouveau mot de passe",
+      "passwordPlaceholder": "Nouveau mot de passe",
+      "repeatPlaceholder": "Confirmer le mot de passe",
+      "submitButton": "Enregistrer",
+      "passwordMismatch": "Les mots de passe ne correspondent pas !",
+      "updateFailed": "Échec de la mise à jour",
+      "updateSuccess": "Mot de passe mis à jour"
+    },
+
+    "minimal": {
+      "meta": {
+        "title": "Page minimale",
+        "description": "Page minimale avec mise en page plein écran"
+      },
+      "link": "Minimale",
+      "title": "Page minimale (mise en page plein écran)",
+      "paragraph": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eaque iste atque, hic porro officiis fugit quae deserunt nobis dolorum odit dignissimos consequatur esse maiores repellat impedit. Quae dolorum id rem?"
+    }
+  }
+}
