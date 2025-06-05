@@ -1,11 +1,13 @@
 <template>
   <div class="flex flex-col items-center justify-center gap-8">
-    <header class="flex w-full flex-col items-center gap-8 border-b-2 border-b-primary p-8">
-      <Icon name="simple-icons:nuxt" size="50" class="text-primary" />
-      <h1>{{ $t("pages.index.title") }}</h1>
-      <h3 class="text-primary">
-        {{ $t("pages.index.description") }}
-      </h3>
+    <header class="flex w-full flex-col items-center gap-4 p-4">
+      <div class="flex flex-col items-center text-center gap-2">
+        <Icon name="simple-icons:nuxt" size="50" class="text-primary" />
+        <h1>{{ $t("pages.index.title") }}</h1>
+        <h4 class="text-primary">
+          {{ $t("pages.index.description") }}
+        </h4>
+      </div>
 
       <div class="flex flex-row items-center gap-2">
         <NuxtLink to="/" class="btn">
@@ -17,34 +19,32 @@
       </div>
     </header>
 
-    <h2>
-      {{ t("pages.index.taglineStart") }}
-      <span class="text-primary">{{ t("pages.index.taglineHighlight") }}</span>
-      {{ t("pages.index.taglineEnd") }}
-    </h2>
+    <hr class="w-[80%] border-primary">
+
+    <div class="flex flex-col items-center text-center gap-4">
+      <h3>
+        {{ t("pages.index.taglineStart") }}
+        <span class="text-primary">{{ t("pages.index.taglineHighlight") }}</span>
+        {{ t("pages.index.taglineEnd") }}
+      </h3>
+    </div>
 
     <div class="flex flex-col items-center gap-2">
-      <ul class="grid grid-cols-5 gap-x-16 gap-y-4">
+      <ul class="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <li
           v-for="(feature, index) in features" :key="index"
-          class="flex flex-row items-center gap-2 text-sm font-semibold"
+          class="flex flex-row items-center gap-2 text-xs lg:text-sm font-semibold"
         >
           <Icon :name="feature.icon" :size="20" class="text-primary" />
           <span>{{ t(feature.label) }}</span>
         </li>
       </ul>
     </div>
-
-    <Account v-if="session" :session="session" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { supabase } from "~/lib/supabase"
-
 const { t } = useI18n()
-
-const session = ref()
 
 useHead({
   title: t("pages.index.meta.title"),
@@ -55,16 +55,6 @@ useSeoMeta({
   description: t("pages.index.meta.description")
 })
 
-onMounted(() => {
-  supabase.auth.getSession().then(({ data }) => {
-    session.value = data.session
-  })
-
-  supabase.auth.onAuthStateChange((_, _session) => {
-    session.value = _session
-  })
-})
-
 const features = [
   { icon: "simple-icons:nuxtdotjs", label: "pages.index.features.nuxt3" },
   { icon: "simple-icons:typescript", label: "pages.index.features.typescript" },
@@ -73,8 +63,9 @@ const features = [
   { icon: "ph:text-aa", label: "pages.index.features.googleFonts" },
   { icon: "mdi:fruit-pineapple", label: "pages.index.features.pinia" },
   { icon: "ph:translate", label: "pages.index.features.i18n" },
-  { icon: "simple-icons:supabase", label: "pages.index.features.supabase" },
+  { icon: "ph:lock-key-open", label: "pages.index.features.nuxtAuth" },
   { icon: "simple-icons:prisma", label: "pages.index.features.prisma" },
-  { icon: "simple-icons:eslint", label: "pages.index.features.eslint" }
+  { icon: "simple-icons:eslint", label: "pages.index.features.eslint" },
+  { icon: "simple-icons:vercel", label: "pages.index.features.vercelAnalytics" },
 ]
 </script>

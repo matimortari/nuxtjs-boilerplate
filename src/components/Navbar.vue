@@ -5,12 +5,12 @@
         <Icon name="simple-icons:nuxt" size="35" class="text-primary" />
       </NuxtLink>
 
-      <div v-if="user" class="flex flex-row items-center gap-2">
+      <div v-if="data" class="flex flex-row items-center gap-2">
         <p class="text-sm">
           {{ t("pages.index.greeting") }},
-          <span class="font-semibold text-primary">{{ user.user_metadata.first_name }}</span>
+          <span class="font-semibold text-primary">{{ data.user?.name }}</span>
         </p>
-        <button class="btn" @click="logout">
+        <button class="btn" @click="() => signOut({ callbackUrl: '/' })">
           {{ t("pages.index.logout") }}
         </button>
       </div>
@@ -19,11 +19,8 @@
         <p class="text-sm">
           {{ t("pages.index.unauthenticated") }}
         </p>
-        <NuxtLink to="/auth/login" class="btn">
-          {{ t("pages.index.login") }}
-        </NuxtLink>
-        <NuxtLink to="/auth/register" class="btn">
-          {{ t("pages.index.register") }}
+        <NuxtLink to="/sign-in" class="btn">
+          {{ t("pages.index.signIn") }}
         </NuxtLink>
       </div>
     </div>
@@ -43,21 +40,13 @@
 </template>
 
 <script setup lang="ts">
-import { supabase } from "~/lib/supabase"
-
-const user = useSupabaseUser()
 const { t } = useI18n()
+const { data, signOut } = useAuth()
 const { toggleTheme, colorMode } = useTheme()
 
-const iconName = computed(() =>
-  colorMode.value === "light" ? "ph:moon" : "ph:sun"
-)
+const iconName = ref("ph:moon")
 
-async function logout() {
-  const { error } = await supabase.auth.signOut()
-  if (error) {
-    // eslint-disable-next-line no-alert
-    return alert(t("pages.index.errorLogout"))
-  }
-}
+onMounted(() => {
+  iconName.value = colorMode.value === "light" ? "ph:moon" : "ph:sun"
+})
 </script>

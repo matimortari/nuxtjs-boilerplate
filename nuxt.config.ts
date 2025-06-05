@@ -6,11 +6,24 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@nuxtjs/i18n",
     "@nuxt/icon",
-    "@nuxtjs/supabase",
     "@nuxtjs/tailwindcss",
-    "@pinia/nuxt"
+    "@pinia/nuxt",
+    "@sidebase/nuxt-auth"
   ],
   srcDir: "src",
+  serverDir: "server",
+  auth: {
+    baseURL: `${process.env.BASE_URL}/api/auth`,
+    originEnvKey: process.env.BASE_URL,
+    provider: {
+      type: "authjs",
+      defaultProvider: "github"
+    },
+    sessionRefresh: {
+      enablePeriodically: 20000,
+      enableOnWindowFocus: true,
+    }
+  },
   googleFonts: {
     families: {
       Inter: true
@@ -29,12 +42,6 @@ export default defineNuxtConfig({
       redirectOn: "root",
       fallbackLocale: "en-US"
     }
-  },
-  supabase: {
-    url: process.env.VITE_SUPABASE_URL,
-    key: process.env.VITE_SUPABASE_ANON_KEY,
-    serviceKey: process.env.VITE_SUPABASE_SERVICE_ROLE_KEY,
-    redirect: false
   },
   tailwindcss: {
     cssPath: "~/styles/globals.css"
