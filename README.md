@@ -18,11 +18,12 @@ A full-stack starter setup for Nuxt 3. Built with modern tools and best practice
 - **Nuxt Tailwind**.
 - **Nuxt Icons**.
 - **Nuxt Google Fonts**.
+- **NuxtAuth** for GitHub and Google authentication.
 - **Pinia** for state management.
 - **Nuxt i18n** for internationalization.
-- **Nuxt Supabase** for e-mail and password authentication.
 - **Prisma** for database management.
 - **ESLint 9**.
+- **Vercel Analytics**.
 
 ## 🏁 Getting Started
 
