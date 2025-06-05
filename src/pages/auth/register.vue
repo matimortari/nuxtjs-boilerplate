@@ -5,7 +5,9 @@
     </header>
 
     <form class="flex flex-col items-center justify-center gap-4" @submit.prevent="register">
-      <p v-if="authError" class="text-danger">{{ authError }}</p>
+      <p v-if="authError" class="text-danger">
+        {{ authError }}
+      </p>
 
       <input v-model="name" type="text" :placeholder="t('pages.register.firstNamePlaceholder')">
       <input v-model="lastname" type="text" :placeholder="t('pages.register.lastNamePlaceholder')">
@@ -13,7 +15,9 @@
       <input v-model="password" type="password" :placeholder="t('pages.register.passwordPlaceholder')">
 
       <div class="flex w-full max-w-sm flex-row items-center justify-center gap-2">
-        <button type="submit" class="btn-primary">{{ t("pages.register.submitButton") }}</button>
+        <button type="submit" class="btn-primary">
+          {{ t("pages.register.submitButton") }}
+        </button>
       </div>
 
       <p class="my-4 text-sm">
@@ -56,7 +60,7 @@ watchEffect(async () => {
   }
 })
 
-const register = async () => {
+async function register() {
   authError.value = ""
   const { data, error } = await supabase.auth.signUp({
     email: email.value,
@@ -73,7 +77,8 @@ const register = async () => {
     const { error: profileError } = await supabase.from("profiles").insert({
       id: user.id
     })
-    if (profileError) authError.value = profileError.message
+    if (profileError)
+      authError.value = profileError.message
   }
 }
 </script>

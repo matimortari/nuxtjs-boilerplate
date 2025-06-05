@@ -1,8 +1,9 @@
 #!/usr/bin/env node
+/* eslint-disable no-console */
 
+import { existsSync, readFileSync, rmSync, writeFileSync } from "node:fs"
+import { join } from "node:path"
 import { confirm, input, select } from "@inquirer/prompts"
-import { existsSync, readFileSync, rmSync, writeFileSync } from "fs"
-import { join } from "path"
 import simpleGit from "simple-git"
 
 const REPO_URL = "https://github.com/matimortari/nuxtjs-boilerplate.git"
@@ -62,7 +63,8 @@ async function run() {
   if (initGit) {
     await simpleGit(destination).init()
     console.log("Initialized a local Git repository.")
-  } else {
+  }
+  else {
     console.log("No Git repository initialized.")
   }
 }

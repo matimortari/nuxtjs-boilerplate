@@ -1,4 +1,4 @@
-export const useTheme = () => {
+export function useTheme() {
   const colorMode = useState<"light" | "dark">("theme", () => {
     if (import.meta.client) {
       const saved = localStorage.getItem("theme")
@@ -13,7 +13,8 @@ export const useTheme = () => {
     const html = document.documentElement
     if (colorMode.value === "dark") {
       html.classList.add("dark")
-    } else {
+    }
+    else {
       html.classList.remove("dark")
     }
   }

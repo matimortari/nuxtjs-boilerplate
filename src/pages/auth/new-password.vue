@@ -5,13 +5,19 @@
     </header>
 
     <form class="flex flex-col items-center justify-center gap-4" @submit.prevent="updatepassword">
-      <p v-if="authError" class="text-danger">{{ authError }}</p>
-      <p v-if="authSuccess" class="text-success">{{ authSuccess }}</p>
+      <p v-if="authError" class="text-danger">
+        {{ authError }}
+      </p>
+      <p v-if="authSuccess" class="text-success">
+        {{ authSuccess }}
+      </p>
 
       <input v-model="password" type="password" :placeholder="t('pages.newPassword.passwordPlaceholder')">
       <input v-model="passwordConfirm" type="password" :placeholder="t('pages.newPassword.repeatPlaceholder')">
 
-      <button type="submit" class="btn-primary">{{ t("pages.newPassword.submitButton") }}</button>
+      <button type="submit" class="btn-primary">
+        {{ t("pages.newPassword.submitButton") }}
+      </button>
     </form>
   </div>
 </template>
@@ -35,7 +41,7 @@ const passwordConfirm = ref("")
 const authSuccess = ref("")
 const authError = ref("")
 
-const updatepassword = async () => {
+async function updatepassword() {
   if (password.value !== passwordConfirm.value) {
     authError.value = t("pages.newPassword.passwordMismatch")
     return
@@ -49,7 +55,8 @@ const updatepassword = async () => {
     setTimeout(() => {
       authError.value = ""
     }, 5000)
-  } else {
+  }
+  else {
     authSuccess.value = t("pages.newPassword.updateSuccess")
     setTimeout(() => {
       authSuccess.value = ""

@@ -42,12 +42,15 @@ async function getProfile() {
       .eq("id", user.id)
       .single()
 
-    if (error && status !== 406) throw error
+    if (error && status !== 406)
+      throw error
 
     if (data) {
       name.value = data.name
     }
-  } catch (error) {
+  }
+  catch (error) {
+    // eslint-disable-next-line no-alert
     alert((error as Error).message)
   }
 }
@@ -64,8 +67,11 @@ async function updateProfile() {
 
     const { error } = await supabase.from("profiles").upsert(updates)
 
-    if (error) throw error
-  } catch (error) {
+    if (error)
+      throw error
+  }
+  catch (error) {
+    // eslint-disable-next-line no-alert
     alert((error as Error).message)
   }
 }

@@ -1,7 +1,9 @@
 <template>
   <transition name="fade">
-    <div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-      @click.self="close">
+    <div
+      v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      @click.self="close"
+    >
       <div tabindex="0" class="popover">
         <header class="m-4 flex items-center justify-between gap-4">
           <h2>{{ title }}</h2>

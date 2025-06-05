@@ -1,29 +1,26 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
+import antfu from "@antfu/eslint-config"
 
-import tailwind from "@hyoban/eslint-plugin-tailwindcss"
-import stylistic from "@stylistic/eslint-plugin"
-import withNuxt from "./.nuxt/eslint.config.mjs"
-
-export default withNuxt(
-  stylistic.configs.recommended,
-  ...tailwind.configs["flat/recommended"],
-  {
-    files: ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.mjs", "**/*.cjs", "**/*.vue"],
-    plugins: { "@stylistic": stylistic },
-    rules: {
-      "@stylistic/indent": ["warn", 2],
-      "@stylistic/quotes": ["warn", "double"],
-      "@stylistic/semi": ["warn", "never"],
-      "@stylistic/comma-dangle": ["warn", "never"],
-      "@stylistic/brace-style": ["warn", "1tbs"],
-      "vue/multi-word-component-names": "off",
-      "vue/max-attributes-per-line": "off",
-      "vue/first-attribute-linebreak": "off",
-      "vue/html-closing-bracket-newline": "off",
-      "vue/html-indent": "off",
-      "vue/html-quotes": "warn",
-      "tailwindcss/no-custom-classnames": "off"
-    }
-  }
-)
+export default antfu({
+  vue: true,
+  typescript: true,
+  jsonc: true,
+  formatters: {
+    css: true,
+    html: true,
+    markdown: true,
+  },
+  stylistic: {
+    indent: 2,
+    quotes: "double",
+    semi: false,
+  },
+  rules: {
+    "no-new": "off",
+    "no-undef": "off",
+    "no-restricted-globals": "off",
+    "regexp/no-obscure-range": "off",
+    "node/prefer-global/process": "off",
+    "style/comma-dangle": "off",
+    "vue/block-order": "off",
+  },
+})

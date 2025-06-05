@@ -1,13 +1,16 @@
 {
   "name": "@matimortari/nuxtjs-starter",
+  "type": "module",
   "version": "1.0.0",
   "description": "A CLI tool to quickstart a Nuxt.js boilerplate project.",
-  "license": "MIT",
   "author": "Matheus Mortari matheus.felipe.19rt@gmail.com",
-  "type": "module",
+  "license": "MIT",
   "main": "index.js",
   "bin": {
     "create-nuxtjs-boilerplate": "index.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,8 +21,5 @@
   },
   "devDependencies": {
     "@types/node": "22.15.2"
-  },
-  "engines": {
-    "node": ">=16.0.0"
   }
 }

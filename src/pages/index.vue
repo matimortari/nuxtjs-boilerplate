@@ -3,12 +3,17 @@
     <header class="flex w-full flex-col items-center gap-8 border-b-2 border-b-primary p-8">
       <Icon name="simple-icons:nuxt" size="50" class="text-primary" />
       <h1>{{ $t("pages.index.title") }}</h1>
-      <h3 class="text-primary">{{ $t("pages.index.description") }}
+      <h3 class="text-primary">
+        {{ $t("pages.index.description") }}
       </h3>
 
       <div class="flex flex-row items-center gap-2">
-        <NuxtLink to="/" class="btn">{{ t("pages.index.link") }}</NuxtLink>
-        <NuxtLink to="/minimal" class="btn">{{ t("pages.minimal.link") }}</NuxtLink>
+        <NuxtLink to="/" class="btn">
+          {{ t("pages.index.link") }}
+        </NuxtLink>
+        <NuxtLink to="/minimal" class="btn">
+          {{ t("pages.minimal.link") }}
+        </NuxtLink>
       </div>
     </header>
 
@@ -20,8 +25,10 @@
 
     <div class="flex flex-col items-center gap-2">
       <ul class="grid grid-cols-5 gap-x-16 gap-y-4">
-        <li v-for="(feature, index) in features" :key="index"
-          class="flex flex-row items-center gap-2 text-sm font-semibold">
+        <li
+          v-for="(feature, index) in features" :key="index"
+          class="flex flex-row items-center gap-2 text-sm font-semibold"
+        >
           <Icon :name="feature.icon" :size="20" class="text-primary" />
           <span>{{ t(feature.label) }}</span>
         </li>

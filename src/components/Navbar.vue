@@ -10,14 +10,21 @@
           {{ t("pages.index.greeting") }},
           <span class="font-semibold text-primary">{{ user.user_metadata.first_name }}</span>
         </p>
-        <button class="btn" @click="logout">{{ t("pages.index.logout") }}
+        <button class="btn" @click="logout">
+          {{ t("pages.index.logout") }}
         </button>
       </div>
 
       <div v-else class="flex flex-row items-center gap-2">
-        <p class="text-sm">{{ t("pages.index.unauthenticated") }}</p>
-        <NuxtLink to="/auth/login" class="btn">{{ t("pages.index.login") }}</NuxtLink>
-        <NuxtLink to="/auth/register" class="btn">{{ t("pages.index.register") }}</NuxtLink>
+        <p class="text-sm">
+          {{ t("pages.index.unauthenticated") }}
+        </p>
+        <NuxtLink to="/auth/login" class="btn">
+          {{ t("pages.index.login") }}
+        </NuxtLink>
+        <NuxtLink to="/auth/register" class="btn">
+          {{ t("pages.index.register") }}
+        </NuxtLink>
       </div>
     </div>
 
@@ -46,9 +53,10 @@ const iconName = computed(() =>
   colorMode.value === "light" ? "ph:moon" : "ph:sun"
 )
 
-const logout = async () => {
+async function logout() {
   const { error } = await supabase.auth.signOut()
   if (error) {
+    // eslint-disable-next-line no-alert
     return alert(t("pages.index.errorLogout"))
   }
 }

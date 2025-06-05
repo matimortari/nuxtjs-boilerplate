@@ -5,19 +5,27 @@
     </header>
 
     <form class="flex flex-col items-center justify-center gap-4" @submit.prevent="login">
-      <p v-if="authError" class="text-danger">{{ authError }}</p>
+      <p v-if="authError" class="text-danger">
+        {{ authError }}
+      </p>
 
       <input v-model="email" type="text" :placeholder="t('pages.login.emailPlaceholder')">
       <input v-model="password" type="password" :placeholder="t('pages.login.passwordPlaceholder')">
 
       <div class="flex w-full max-w-sm flex-row items-center justify-center gap-2">
-        <button type="submit" class="btn-primary">{{ t("pages.login.submitButton") }}</button>
-        <button class="btn-secondary" @click="showForgotPassword = true">{{ t("pages.login.forgotPassword") }}</button>
+        <button type="submit" class="btn-primary">
+          {{ t("pages.login.submitButton") }}
+        </button>
+        <button class="btn-secondary" @click="showForgotPassword = true">
+          {{ t("pages.login.forgotPassword") }}
+        </button>
       </div>
     </form>
 
     <div class="my-4 flex flex-col items-center gap-2">
-      <p class="text-sm text-muted-foreground">{{ t("pages.login.orSignInWith") }}</p>
+      <p class="text-sm text-muted-foreground">
+        {{ t("pages.login.orSignInWith") }}
+      </p>
       <div class="flex gap-4">
         <button class="btn bg-[#db4437] text-[#ebe8e8]" @click="signInWithGoogle">
           <Icon name="simple-icons:google" size="20" />
@@ -67,7 +75,7 @@ const email = ref("")
 const password = ref("")
 const showForgotPassword = ref(false)
 
-const login = async () => {
+async function login() {
   authError.value = ""
   const { data, error } = await supabase.auth.signInWithPassword({
     email: email.value,
@@ -87,12 +95,14 @@ const login = async () => {
       .eq("id", user.id)
       .single()
 
-    if (profileError) authError.value = profileError.message
+    if (profileError)
+      authError.value = profileError.message
+    // eslint-disable-next-line no-console
     else console.log("User profile:", profile)
   }
 }
 
-const signInWithGoogle = async () => {
+async function signInWithGoogle() {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
@@ -107,7 +117,7 @@ const signInWithGoogle = async () => {
   }
 }
 
-const signInWithGithub = async () => {
+async function signInWithGithub() {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: "github",
     options: {
