@@ -27,16 +27,28 @@ const { t } = useI18n()
 const { signIn } = useAuth()
 
 definePageMeta({
+<<<<<<< HEAD
   auth: { unauthenticatedOnly: true, navigateAuthenticatedTo: "/" },
+=======
+  auth: { unauthenticatedOnly: true, navigateAuthenticatedTo: "/" }
+>>>>>>> 71be18709bdf4266668624c9c37099c209bde1c2
 })
 
 useHead({
   title: t("pages.signIn.meta.title"),
+<<<<<<< HEAD
   meta: [{ name: "description", content: t("pages.signIn.meta.description") }],
 })
 useSeoMeta({
   title: t("pages.signIn.meta.title"),
   description: t("pages.signIn.meta.description"),
+=======
+  meta: [{ name: "description", content: t("pages.signIn.meta.description") }]
+})
+useSeoMeta({
+  title: t("pages.signIn.meta.title"),
+  description: t("pages.signIn.meta.description")
+>>>>>>> 71be18709bdf4266668624c9c37099c209bde1c2
 })
 
 watchEffect(async () => {

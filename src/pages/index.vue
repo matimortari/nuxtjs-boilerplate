@@ -52,7 +52,11 @@ useHead({
 })
 useSeoMeta({
   title: t("pages.index.meta.title"),
+<<<<<<< HEAD
   description: t("pages.index.meta.description"),
+=======
+  description: t("pages.index.meta.description")
+>>>>>>> 71be18709bdf4266668624c9c37099c209bde1c2
 })
 
 const features = [
