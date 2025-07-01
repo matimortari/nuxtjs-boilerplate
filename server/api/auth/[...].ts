@@ -1,7 +1,26 @@
+import type { DefaultSession } from "next-auth"
 import { NuxtAuthHandler } from "#auth"
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google"
 import db from "~/lib/db"
+
+declare module "next-auth" {
+  interface Session extends DefaultSession {
+    user: {
+      id: string
+      name: string
+      description: string
+      image: string
+      email: string
+    }
+  }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT {
+    userId: string
+  }
+}
 
 export default NuxtAuthHandler({
   secret: process.env.AUTH_SECRET,
@@ -9,48 +28,106 @@ export default NuxtAuthHandler({
     // @ts-expect-error Use .default here for it to work during SSR.
     GithubProvider.default({
       clientId: process.env.GITHUB_CLIENT_ID!,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET!
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     }),
     // @ts-expect-error Use .default here for it to work during SSR.
     GoogleProvider.default({
       clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!
-    })
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
   ],
   callbacks: {
     async jwt({ token, account, profile }) {
       if (account && profile) {
+        const providerAccountId = account.providerAccountId
+        const provider = account.provider
         const email = profile.email as string
-        let user = await db.user.findUnique({ where: { email } })
+        const description = ""
+
+        const getProfilePicture = (profile: any, provider: string) => {
+          if (provider === "google") {
+            return profile.picture ?? ""
+          }
+          else if (provider === "github") {
+            return profile.avatar_url ?? ""
+          }
+          return ""
+        }
+
+        const existingAccount = await db.account.findUnique({
+          where: {
+            provider_providerAccountId: {
+              provider,
+              providerAccountId,
+            },
+          },
+          include: { user: true },
+        })
+
+        let user = existingAccount?.user
 
         if (!user) {
+          // Fall back to email-based lookup
+          user = (await db.user.findUnique({ where: { email } })) ?? undefined
+        }
+
+        if (!user) {
+          // If user does not exist, create a new user
           user = await db.user.create({
             data: {
               email,
+              description,
               name: profile.name ?? "",
-              avatar: profile.image ?? "",
-            }
+              image: getProfilePicture(profile, provider),
+              accounts: {
+                create: {
+                  provider,
+                  providerAccountId,
+                },
+              },
+            },
           })
         }
+        else {
+          // Ensure the account is linked (if not already)
+          const linkedAccount = await db.account.findUnique({
+            where: {
+              provider_providerAccountId: {
+                provider,
+                providerAccountId,
+              },
+            },
+          })
 
-        token.sessionToken = user.id
+          if (!linkedAccount) {
+            await db.account.create({
+              data: {
+                userId: user.id,
+                provider,
+                providerAccountId,
+              },
+            })
+          }
+        }
+
+        token.userId = user.id
       }
 
       return token
     },
 
     async session({ session, token }) {
-      if (!token.sessionToken)
+      if (!token.userId)
         return session
 
       const user = await db.user.findUnique({
-        where: { id: token.sessionToken as string },
+        where: { id: token.userId as string },
         select: {
           name: true,
-          avatar: true,
-          role: true,
-          email: true
-        }
+          description: true,
+          image: true,
+          email: true,
+        },
       })
 
       if (!user)
@@ -60,11 +137,11 @@ export default NuxtAuthHandler({
         ...session,
         user: {
           name: user.name,
-          avatar: user.avatar,
-          role: user.role,
-          email: user.email
-        }
+          description: user.description,
+          image: user.image,
+          email: user.email,
+        },
       }
-    }
-  }
+    },
+  },
 })

@@ -18,15 +18,15 @@ async function askVersionChoice() {
     message: "Which version of the boilerplate do you want to clone?",
     choices: [
       { name: "Default", value: "main" },
-      { name: "Include Tests", value: "with-tests" }
-    ]
+      { name: "Include Tests", value: "with-tests" },
+    ],
   })
 }
 
 async function askProjectName() {
   return await input({
     message: "Enter your project name:",
-    default: "nuxt-app"
+    default: "nuxt-app",
   })
 }
 
@@ -34,7 +34,7 @@ async function askInitGit() {
   return await confirm({
     message:
       "Do you want to initialize a local Git repository in this project?",
-    default: true
+    default: true,
   })
 }
 

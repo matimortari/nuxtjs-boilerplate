@@ -19,6 +19,6 @@ useLocaleHead({
   dir: true,
   key: "id",
   seo: true,
-  lang: true
+  lang: true,
 })
 </script>

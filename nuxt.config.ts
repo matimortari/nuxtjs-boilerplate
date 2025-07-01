@@ -2,13 +2,14 @@ import { defineNuxtConfig } from "nuxt/config"
 
 export default defineNuxtConfig({
   modules: [
+    "@nuxtjs/color-mode",
     "@nuxt/eslint",
     "@nuxtjs/google-fonts",
-    "@nuxtjs/i18n",
     "@nuxt/icon",
     "@nuxtjs/tailwindcss",
     "@pinia/nuxt",
-    "@sidebase/nuxt-auth"
+    "@sidebase/nuxt-auth",
+    "@vueuse/motion/nuxt",
   ],
   srcDir: "src",
   serverDir: "server",
@@ -17,34 +18,30 @@ export default defineNuxtConfig({
     originEnvKey: process.env.BASE_URL,
     provider: {
       type: "authjs",
-      defaultProvider: "github"
+      defaultProvider: "github",
     },
+    globalAppMiddleware: true,
     sessionRefresh: {
       enablePeriodically: 20000,
       enableOnWindowFocus: true,
-    }
+    },
+  },
+  colorMode: {
+    classSuffix: "",
+    preference: "system",
+    fallback: "light",
+    storageKey: "nuxt-color-mode",
   },
   googleFonts: {
     families: {
-      Inter: true
+      Inter: true,
     },
     display: "swap",
     prefetch: true,
-    preconnect: true
-  },
-  i18n: {
-    baseUrl: process.env.BASE_URL,
-    restructureDir: "src/lib",
-    vueI18n: "i18n.ts",
-    detectBrowserLanguage: {
-      useCookie: false,
-      alwaysRedirect: true,
-      redirectOn: "root",
-      fallbackLocale: "en-US"
-    }
+    preconnect: true,
   },
   tailwindcss: {
-    cssPath: "~/styles/globals.css"
+    cssPath: "~/styles/globals.css",
   },
-  compatibilityDate: "2025-05-24"
+  compatibilityDate: "2025-05-24",
 })

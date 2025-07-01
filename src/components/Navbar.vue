@@ -31,7 +31,7 @@
       </a>
 
       <button class="btn" @click="toggleTheme">
-        <Icon :name="iconName" size="20" />
+        <Icon :name="themeIcon" size="20" />
       </button>
 
       <LanguageSelector />
@@ -42,11 +42,5 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const { data, signOut } = useAuth()
-const { toggleTheme, colorMode } = useTheme()
-
-const iconName = ref("ph:moon")
-
-onMounted(() => {
-  iconName.value = colorMode.value === "light" ? "ph:moon" : "ph:sun"
-})
+const { toggleTheme, themeIcon } = useTheme()
 </script>

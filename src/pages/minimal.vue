@@ -15,14 +15,14 @@ const { t } = useI18n()
 
 useHead({
   title: t("pages.minimal.meta.title"),
-  meta: [{ name: "description", content: t("pages.minimal.meta.description") }]
+  meta: [{ name: "description", content: t("pages.minimal.meta.description") }],
 })
 useSeoMeta({
   title: t("pages.minimal.meta.title"),
-  description: t("pages.minimal.meta.description")
+  description: t("pages.minimal.meta.description"),
 })
 
 definePageMeta({
-  layout: "fullscreen"
+  layout: "fullscreen",
 })
 </script>

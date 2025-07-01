@@ -1,42 +1,42 @@
 export function useTheme() {
-  const colorMode = useState<"light" | "dark">("theme", () => {
-    if (import.meta.client) {
-      const saved = localStorage.getItem("theme")
-      if (saved === "dark" || saved === "light") {
-        return saved
-      }
-    }
-    return "light"
-  })
+  const colorMode = useState<"light" | "dark">("theme", () => "light")
+  const storageKey = "nuxt-color-mode"
 
   const updateHtmlClass = () => {
     const html = document.documentElement
-    if (colorMode.value === "dark") {
-      html.classList.add("dark")
+    html.classList.remove("light", "dark")
+    html.classList.add(colorMode.value)
+  }
+
+  const syncThemeFromLocalStorage = () => {
+    const saved = localStorage.getItem(storageKey)
+    if (saved === "dark" || saved === "light") {
+      colorMode.value = saved
     }
     else {
-      html.classList.remove("dark")
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+      colorMode.value = prefersDark ? "dark" : "light"
     }
+    updateHtmlClass()
   }
 
   const toggleTheme = () => {
     colorMode.value = colorMode.value === "dark" ? "light" : "dark"
-    if (import.meta.client) {
-      localStorage.setItem("theme", colorMode.value)
-    }
+    localStorage.setItem(storageKey, colorMode.value)
     updateHtmlClass()
   }
-  if (import.meta.client) {
-    updateHtmlClass()
 
-    const saved = localStorage.getItem("theme")
-    if (saved === "dark" || saved === "light") {
-      if (colorMode.value !== saved) {
-        colorMode.value = saved
-        updateHtmlClass()
-      }
-    }
+  onMounted(() => {
+    syncThemeFromLocalStorage()
+  })
+
+  const themeIcon = computed(() =>
+    colorMode.value === "light" ? "ph:moon" : "ph:sun",
+  )
+
+  return {
+    colorMode,
+    toggleTheme,
+    themeIcon,
   }
-
-  return { colorMode, toggleTheme }
 }

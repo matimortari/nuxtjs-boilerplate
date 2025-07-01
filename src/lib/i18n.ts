@@ -13,17 +13,17 @@ export default defineI18nConfig(() => {
       {
         code: "en",
         iso: "en-US",
-        isCatchallLocale: true
+        isCatchallLocale: true,
       },
       {
         code: "fr",
-        iso: "fr-FR"
-      }
+        iso: "fr-FR",
+      },
     ],
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: "nuxt-lang",
-      redirectOn: "root"
-    }
+      redirectOn: "root",
+    },
   }
 })

@@ -20,7 +20,6 @@ export default antfu({
     "no-restricted-globals": "off",
     "regexp/no-obscure-range": "off",
     "node/prefer-global/process": "off",
-    "style/comma-dangle": "off",
     "vue/block-order": "off",
   },
 })
