@@ -1,3 +1,5 @@
+import { fileURLToPath } from "node:url"
+
 export default defineNuxtConfig({
   modules: [
     "@nuxt/icon",
@@ -8,6 +10,9 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "nuxt-auth-utils",
   ],
+  alias: {
+    "#server": fileURLToPath(new URL("./server", import.meta.url)),
+  },
   runtimeConfig: {
     public: {
       baseUrl: process.env.NUXT_PUBLIC_BASE_URL,
