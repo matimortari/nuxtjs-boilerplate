@@ -1,0 +1,39 @@
+{
+  "name": "@matimortari/nuxtjs-starter",
+  "type": "module",
+  "version": "1.0.2",
+  "description": "A CLI tool to quickly scaffold a Nuxt.js boilerplate project",
+  "author": "Matheus Mortari <matheus.felipe.19rt@gmail.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "bin": {
+    "create-nuxtjs-boilerplate": "dist/index.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "echo \"No tests defined yet\"",
+    "clean": "rimraf dist my-nuxt-app",
+    "prepublishOnly": "npm run build && npm test",
+    "release": "npm version patch && npm publish --access public"
+  },
+  "dependencies": {
+    "chalk": "4.1.2",
+    "figures": "6.1.0",
+    "fs-extra": "11.1.1",
+    "inquirer": "12.9.2",
+    "ora": "8.2.0",
+    "rimraf": "5.0.0",
+    "simple-git": "3.27.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "11.0.4",
+    "@types/node": "24.2.1",
+    "ts-node": "10.9.2",
+    "tsconfig-paths": "4.2.0",
+    "typescript": "5.9.2"
+  }
+}
