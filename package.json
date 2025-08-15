@@ -16,6 +16,8 @@
     "lint:fix": "eslint . --debug --fix"
   },
   "dependencies": {
+    "@iconify-json/ph": "1.2.2",
+    "@iconify-json/simple-icons": "1.2.47",
     "@nuxt/icon": "1.15.0",
     "@nuxtjs/color-mode": "3.5.2",
     "@nuxtjs/google-fonts": "3.2.0",
