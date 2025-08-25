@@ -7,9 +7,9 @@
     </div>
 
     <div class="flex flex-row items-center gap-2">
-      <a href="https://github.com/matimortari/nuxtjs-starter" class="btn">
+      <nuxt-link to="https://github.com/matimortari/nuxtjs-starter" class="btn">
         <icon name="simple-icons:github" size="20" />
-      </a>
+      </nuxt-link>
 
       <button class="btn" @click="toggleTheme">
         <icon :name="themeIcon" size="20" />

@@ -12,7 +12,7 @@
       </div>
     </header>
 
-    <hr class="w-4/5 border-primary">
+    <hr class="w-4/5 !border-primary">
 
     <div class="flex flex-col items-center gap-2">
       <h2 class="text-lg font-semibold">
