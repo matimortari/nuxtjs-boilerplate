@@ -1,15 +1,17 @@
+import tailwindcss from "@tailwindcss/vite"
+
 export default defineNuxtConfig({
-  modules: [
-    "@nuxt/icon",
-    "@nuxtjs/color-mode",
-    "@nuxtjs/google-fonts",
-    "@nuxtjs/tailwindcss",
-    "nuxt-shiki",
-  ],
+  modules: ["@nuxt/icon", "@nuxtjs/color-mode", "@nuxtjs/google-fonts", "nuxt-shiki"],
   runtimeConfig: {
     public: {
       baseUrl: process.env.NUXT_PUBLIC_BASE_URL,
     },
+  },
+  css: ["~/assets/styles.css"],
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
   },
   colorMode: {
     classSuffix: "",
@@ -36,10 +38,6 @@ export default defineNuxtConfig({
     highlightOptions: {
       theme: "catppuccin-macchiato",
     },
-  },
-  tailwindcss: {
-    cssPath: "~/assets/styles.css",
-    quiet: true,
   },
   compatibilityDate: "2025-05-24",
 })

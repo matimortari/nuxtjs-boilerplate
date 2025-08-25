@@ -1,14 +1,7 @@
 import { fileURLToPath } from "node:url"
 
 export default defineNuxtConfig({
-  modules: [
-    "@nuxt/icon",
-    "@nuxtjs/color-mode",
-    "@nuxtjs/google-fonts",
-    "@nuxtjs/tailwindcss",
-    "@pinia/nuxt",
-    "nuxt-auth-utils",
-  ],
+  modules: [ "@nuxt/icon", "@nuxtjs/color-mode", "@nuxtjs/google-fonts", "@pinia/nuxt", "nuxt-auth-utils", ],
   alias: {
     "#server": fileURLToPath(new URL("./server", import.meta.url)),
   },
@@ -19,6 +12,12 @@ export default defineNuxtConfig({
     public: {
       baseUrl: process.env.NUXT_PUBLIC_BASE_URL,
     },
+  },
+  css: ["~/assets/styles.css"],
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
   },
   colorMode: {
     classSuffix: "",
@@ -38,10 +37,6 @@ export default defineNuxtConfig({
     clientBundle: {
       scan: true,
     },
-  },
-  tailwindcss: {
-    cssPath: "~/assets/styles.css",
-    quiet: true,
   },
   compatibilityDate: "2025-05-24",
 })

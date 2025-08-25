@@ -29,7 +29,7 @@ Used to showcase the structure and capabilities of the project.
 - **Nuxt 4** with **Vue** composition API and **Nitro** server engine.
 - **TypeScript 6**.
 - **ESLint 9**.
-- **Tailwind CSS** via **@nuxtjs/tailwindcss**.
+- **Tailwind CSS 4**.
 - **Google Fonts** via **@nuxtjs/google-fonts**.
 - **Iconify Icons** via **@nuxt/icon**.
 - **OAuth** authentication with Google and GitHub via **nuxt-auth-utils**.
