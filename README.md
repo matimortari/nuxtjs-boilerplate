@@ -23,7 +23,9 @@ This is a monorepo setup for a Nuxt.js starter project, which includes a web app
 
 ## 🛠️ Key Features
 
-#### Standard Package
+xxx:
+
+#### Standard Template
 
 - **Nuxt 4** with **Vue** composition API and **Nitro** server engine.
 - **TypeScript 6**.
@@ -36,11 +38,11 @@ This is a monorepo setup for a Nuxt.js starter project, which includes a web app
 - **Prisma** for database management.
 - **Vercel Analytics**.
 
-#### i18n Package
+#### i18n Template
 
 - **i18n** support for multiple languages via **@nuxtjs/i18n**.
 
-#### Test Package
+#### Test Template
 
 - **Vitest** for unit and integration testing.
 - **Playwright** for end-to-end testing.

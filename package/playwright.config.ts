@@ -1,6 +1,6 @@
 import { defineConfig } from "@playwright/test"
 
 export default defineConfig({
-  outputDir: "./tests/e2e/test-results",
-  testDir: "./tests/e2e",
+  outputDir: "./test/e2e/test-results",
+  testDir: "./test/e2e",
 })

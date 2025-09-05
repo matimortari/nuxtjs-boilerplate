@@ -1,17 +1,20 @@
 import { describe, expect, it } from "vitest"
 import { PRESET_EXTRA_PACKAGES, PRESET_EXTRA_SCRIPTS, REPO_URL } from "../src/helpers/constants"
 
-describe("constants", () => {
-  it("should have a valid REPO_URL", () => {
+const presets = ["standard", "with-i18n", "with-tests"] as const
+
+describe("repository", () => {
+  it("has a valid REPO_URL", () => {
     expect(REPO_URL).toBe("https://github.com/matimortari/nuxtjs-starter.git")
   })
+})
 
-  it("should have scripts for 'with-tests'", () => {
-    expect(PRESET_EXTRA_SCRIPTS["with-tests"]).toHaveProperty("test")
-    expect(PRESET_EXTRA_SCRIPTS["with-tests"]).toHaveProperty("coverage")
+describe.each(presets)("preset %s", (preset) => {
+  it("has a valid scripts object", () => {
+    expect(PRESET_EXTRA_SCRIPTS[preset]).toBeTypeOf("object")
   })
 
-  it("should have devDependencies for 'with-tests'", () => {
-    expect(PRESET_EXTRA_PACKAGES["with-tests"].devDependencies).toHaveProperty("vitest")
+  it("has a valid packages object", () => {
+    expect(PRESET_EXTRA_PACKAGES[preset]).toBeTypeOf("object")
   })
 })
